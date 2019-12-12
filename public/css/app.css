@@ -84,16 +84,16 @@ svg {
     bottom: 2rem;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    font-size: 0;
     list-style-type: none;
 }
 .slider-pagi__elem {
+    display: block;
+    margin: 5px 5px;
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 2rem;
-    height: 2rem;
-    margin: 0 0.5rem;
+    width: 0.8rem;
+    height: 0.8rem;
     border-radius: 50%;
     border: 2px solid #fff;
     cursor: pointer;
@@ -293,7 +293,6 @@ a.slide__text-link:hover { text-decoration:none; color:#FFF;}
     }
 }
 .slide__text-heading {
-    font-family: "Polar", Helvetica, Arial, sans-serif;
     margin-bottom: 2rem;
 }
 @media (max-width: 991px) {
@@ -302,7 +301,6 @@ a.slide__text-link:hover { text-decoration:none; color:#FFF;}
     }
 }
 .slide__text-desc {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
     margin-bottom: 1.5rem;
 }
 @media (max-width: 991px) {
@@ -316,7 +314,6 @@ a.slide__text-link:hover { text-decoration:none; color:#FFF;}
     position: relative;
     padding: 0.5rem;
     cursor: pointer;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
     -webkit-perspective: 1000px;
     perspective: 1000px;
 }

@@ -1,5 +1,8 @@
 <nav class="navbar py-4 navbar-expand-lg navbar-dark navbar-back">
     <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -41,7 +44,7 @@
                 </svg>
                 <div class="slide__text">
                     <h2 class="slide__text-heading">Project name 1</h2>
-                    <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
+                    <p class="slide__text-desc">Lornihil animi facere, doloremque voluptate tempore quia.</p>
                     <a href="http://hkmbhutto.wix.com/abdulrasheed"
                        class="slide__text-link">Project link</a>
                 </div>
