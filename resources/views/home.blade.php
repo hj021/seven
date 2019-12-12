@@ -4,10 +4,10 @@
     <div class="container my-4">
 
         <div class="row d-flex flex-wrap portfolio">
-            <video class="col-12 col-md-6" autoplay>
+            <video class="col-12 col-md-6" muted autoplay>
                 <source src="{{ asset('upload/test.mp4') }}"/>
             </video>
-            <video class="col-12 col-md-6" autoplay>
+            <video class="col-12 col-md-6" muted autoplay>
                 <source src="{{ asset('upload/test.mp4') }}"/>
             </video>
         </div>

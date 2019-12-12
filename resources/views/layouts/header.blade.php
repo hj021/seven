@@ -1,36 +1,66 @@
 <nav class="navbar py-4 navbar-expand-lg navbar-dark navbar-back">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
+        <a class="navbar-brand" href="#">بوم نقش پرداز</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropMenu" href="#">
+                        محصولات
+                    </a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">صفحه خانه </a>
+                </li>
+                <div class="col-1"></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;" src="{{ asset('img/user.png') }}" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;" src="{{ asset('img/search.png') }}" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;" src="{{ asset('img/basket.png') }}" alt=""></a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
     </div>
 </nav>
+
+<div class="position-relative">
+    <div class="drop-content">
+        <div class="container">
+            <div class="d-flex justify-content-around text-gray" style="margin-top:100px;">
+                <div class="col-3">
+                    <span>عنوان</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#">اول</a>
+                </div>
+                <div class="col-3">
+                    <span>عنوان</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#">اول</a>
+                </div>
+                <div class="col-3">
+                    <span>عنوان</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#">اول</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="slider-container">
     <div class="slider-control left inactive"></div>
@@ -54,7 +84,7 @@
         </div>
 
         <div class="slide slide-1 ">
-            <div class="slide__bg"></div>
+            <div class="slide__bg" style="background-image: url({{ asset('img/slide.png') }});"></div>
             <div class="slide__content">
                 <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
                     <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
@@ -73,3 +103,14 @@
 
     </div>
 </div>
+
+<script>
+    let menu = document.getElementsByClassName('drop-content')[0];
+    dropMenu.onmouseover = function(){
+        menu.style.opacity = '1';
+    }
+    menu.onmouseleave = function(){
+        let menu = document.getElementsByClassName('drop-content')[0];
+        menu.style.opacity = '0';
+    }
+</script>
