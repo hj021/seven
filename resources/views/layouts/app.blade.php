@@ -3,12 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-
     <title>@yield('title')</title>
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +11,8 @@
     @yield('slider')
     @yield('pics')
     @yield('news')
-    @includeIf('layouts.footer')
+    @include('layouts.footer')
+
 </body>
 <script src="{{ asset('js/jquery.js') }}" defer></script>
 <script src="{{ asset('js/bootstrap.js') }}" defer></script>
