@@ -1,3 +1,48 @@
+<div id="GetOfferModal" class="modal fade modal-get-offer" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <div class="col-10"></div>
+                <h3>ورود</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form" role="form" autocomplete="off" id="formGetOffer" novalidate="" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" id="uname1" required=""
+                               placeholder="نام کاربری">
+                        <div class="invalid-feedback">لطفا این گزینه را وارد نمایید.</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="pwd1" required="" placeholder="رمز">
+                        <div class="invalid-feedback">وارد کردن پسور الزامی است.</div>
+                    </div>
+                    <a href="" class="text-muted py-2 d-block">ثبت نام</a>
+                    <a href="" class="text-muted py-2 d-block">فراموشی رمز عبور</a>
+                    <div class="form-group py-4">
+                        <button type="submit" class="btn btn-light" id="btnGetOffer">ورود</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="searchBox" class="d-none justify-content-center align-content-center align-items-center w-100 h-100 fixed-top"
+     style="background-color: rgba(50,50,50,0.9)">
+    <form action="" method="get" class="col-10 col-md-6 ">
+        @csrf
+        <div class="input-group">
+            <div class="border-dark border input-group-prepend">
+                <a href="">
+                    <div class="bg-dark p-2"><img src="{{ asset('img/search.png') }}" alt="search"></div>
+                </a>
+            </div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="جست و جو ...">
+        </div>
+    </form>
+</div>
+
 <nav class="navbar py-4 navbar-expand-lg navbar-dark navbar-back">
     <div class="container">
 
@@ -8,7 +53,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="dropMenu" href="#">
@@ -21,18 +66,21 @@
                 </li>
                 <div class="col-1"></div>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;" src="{{ asset('img/user.png') }}" alt=""></a>
+                    <a href="#GetOfferModal" role="button" class="nav-link" data-toggle="modal"><img class="img-fluid"
+                                                                                                     style="width: 20px;"
+                                                                                                     src="{{ asset('img/user.png') }}"
+                                                                                                     alt=""></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;" src="{{ asset('img/search.png') }}" alt=""></a>
+                    <a id="searchBtn" class="nav-link" href="#"><img class="img-fluid" style="width: 20px;"
+                                                      src="{{ asset('img/search.png') }}" alt=""></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;" src="{{ asset('img/basket.png') }}" alt=""></a>
+                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;"
+                                                      src="{{ asset('img/basket.png') }}" alt=""></a>
                 </li>
             </ul>
         </div>
-
-
 
 
     </div>
@@ -71,9 +119,9 @@
         <div class="slide slide-0 active">
             <div class="slide__bg"></div>
             <div class="slide__content">
-                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
-                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
-                </svg>
+                {{--                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">--}}
+                {{--                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>--}}
+                {{--                </svg>--}}
                 <div class="slide__text">
                     <h2 class="slide__text-heading">Project name 1</h2>
                     <p class="slide__text-desc">Lornihil animi facere, doloremque voluptate tempore quia.</p>
@@ -86,9 +134,9 @@
         <div class="slide slide-1 ">
             <div class="slide__bg" style="background-image: url({{ asset('img/slide.png') }});"></div>
             <div class="slide__content">
-                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
-                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
-                </svg>
+                {{--                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">--}}
+                {{--                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>--}}
+                {{--                </svg>--}}
                 <div class="slide__text">
                     <h2 class="slide__text-heading">Project name 2</h2>
                     <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
@@ -106,11 +154,38 @@
 
 <script>
     let menu = document.getElementsByClassName('drop-content')[0];
-    dropMenu.onmouseover = function(){
+    dropMenu.onmouseover = function () {
+        menu.style.display = 'block';
         menu.style.opacity = '1';
     }
-    menu.onmouseleave = function(){
+    menu.onmouseleave = function () {
         let menu = document.getElementsByClassName('drop-content')[0];
+        menu.style.display = 'none';
         menu.style.opacity = '0';
     }
+
+    $("#btnGetOffer").click(function (event) {
+
+        //Fetch form to apply custom Bootstrap validation
+        var form = $("#formGetOffer")
+
+        if (form[0].checkValidity() === false) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+
+        form.addClass('was-validated');
+    });
+
+    searchBtn.onclick = function(){
+      if(searchBox.hasClass('d-none'))
+      {
+          searchBox.classList.remove('d-none');
+          searchBox.classList.add('d-flex');
+      }
+    };
+    searchBox.onclick = function(){
+        searchBox.classList.add('d-none');
+        searchBox.classList.remove('d-flex');
+    };
 </script>
