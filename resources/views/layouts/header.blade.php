@@ -28,8 +28,8 @@
     </div>
 </div>
 
-<div id="searchBox" class="d-none justify-content-center align-content-center align-items-center w-100 h-100 fixed-top"
-     style="background-color: rgba(50,50,50,0.9)">
+<div id="searchBox" class="d-none justify-content-center align-content-center align-items-center w-100 h-100 fixed-top">
+    <div id="searchBack" class="position-absolute w-100 h-100" style="background-color: rgba(50,50,50,0.9)"></div>
     <form action="" method="get" class="col-10 col-md-6 ">
         @csrf
         <div class="input-group">
@@ -153,16 +153,29 @@
 </div>
 
 <script>
+
+    searchBtn.onclick = function(){
+        if(searchBox.classList.contains('d-none'))
+        {
+            searchBox.classList.remove('d-none');
+            searchBox.classList.add('d-flex');
+        }
+    };
+    searchBack.onclick = function(){
+        searchBox.classList.add('d-none');
+        searchBox.classList.remove('d-flex');
+    };
+
     let menu = document.getElementsByClassName('drop-content')[0];
     dropMenu.onmouseover = function () {
         menu.style.display = 'block';
         menu.style.opacity = '1';
-    }
+    };
     menu.onmouseleave = function () {
         let menu = document.getElementsByClassName('drop-content')[0];
         menu.style.display = 'none';
         menu.style.opacity = '0';
-    }
+    };
 
     $("#btnGetOffer").click(function (event) {
 
@@ -177,15 +190,4 @@
         form.addClass('was-validated');
     });
 
-    searchBtn.onclick = function(){
-      if(searchBox.hasClass('d-none'))
-      {
-          searchBox.classList.remove('d-none');
-          searchBox.classList.add('d-flex');
-      }
-    };
-    searchBox.onclick = function(){
-        searchBox.classList.add('d-none');
-        searchBox.classList.remove('d-flex');
-    };
 </script>
