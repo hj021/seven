@@ -43,7 +43,7 @@
     </form>
 </div>
 
-<nav class="navbar py-4 navbar-expand-lg navbar-dark navbar-back">
+<nav class="navbar py-4 navbar-expand-lg navbar-dark @isset($header) navbar-back @else dark-back @endif">
     <div class="container">
 
         <a class="navbar-brand" href="#">بوم نقش پرداز</a>
@@ -66,28 +66,30 @@
                 </li>
                 <div class="col-1"></div>
                 <li class="nav-item">
-                    <a href="#GetOfferModal" role="button" class="nav-link" data-toggle="modal"><img class="img-fluid"
-                                                                                                     style="width: 20px;"
-                                                                                                     src="{{ asset('img/user.png') }}"
-                                                                                                     alt=""></a>
+                    <a href="#GetOfferModal" role="button" class="nav-link" data-toggle="modal">
+                        <img class="img-fluid"
+                             style="width: 20px;"
+                             src="{{ asset('img/user.png') }}"
+                             alt="">
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a id="searchBtn" class="nav-link" href="#"><img class="img-fluid" style="width: 20px;"
-                                                      src="{{ asset('img/search.png') }}" alt=""></a>
+                                                                     src="{{ asset('img/search.png') }}" alt=""></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;"
-                                                      src="{{ asset('img/basket.png') }}" alt=""></a>
+                                                      src="{{ asset('img/basket.png') }}" alt="">
+                    </a>
                 </li>
             </ul>
         </div>
-
 
     </div>
 </nav>
 
 <div class="position-relative">
-    <div class="drop-content">
+    <div class="drop-content position-fixed" style="background-color: @isset($header) rgba(34, 34, 34, 0.8) @else #222 @endif">
         <div class="container">
             <div class="d-flex justify-content-around text-gray" style="margin-top:100px;">
                 <div class="col-3">
@@ -110,58 +112,15 @@
     </div>
 </div>
 
-<div class="slider-container">
-    <div class="slider-control left inactive"></div>
-    <div class="slider-control right"></div>
-    <ul class="slider-pagi"></ul>
-    <div class="slider">
-
-        <div class="slide slide-0 active">
-            <div class="slide__bg"></div>
-            <div class="slide__content">
-                {{--                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">--}}
-                {{--                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>--}}
-                {{--                </svg>--}}
-                <div class="slide__text">
-                    <h2 class="slide__text-heading">Project name 1</h2>
-                    <p class="slide__text-desc">Lornihil animi facere, doloremque voluptate tempore quia.</p>
-                    <a href="http://hkmbhutto.wix.com/abdulrasheed"
-                       class="slide__text-link">Project link</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide slide-1 ">
-            <div class="slide__bg" style="background-image: url({{ asset('img/slide.png') }});"></div>
-            <div class="slide__content">
-                {{--                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">--}}
-                {{--                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>--}}
-                {{--                </svg>--}}
-                <div class="slide__text">
-                    <h2 class="slide__text-heading">Project name 2</h2>
-                    <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
-                        veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil
-                        animi facere, doloremque voluptate tempore quia.</p>
-                    <a href="http://hkmbhutto.wix.com/abdulrasheed"
-                       class="slide__text-link">Project link</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 <script>
 
-    searchBtn.onclick = function(){
-        if(searchBox.classList.contains('d-none'))
-        {
+    searchBtn.onclick = function () {
+        if (searchBox.classList.contains('d-none')) {
             searchBox.classList.remove('d-none');
             searchBox.classList.add('d-flex');
         }
     };
-    searchBack.onclick = function(){
+    searchBack.onclick = function () {
         searchBox.classList.add('d-none');
         searchBox.classList.remove('d-flex');
     };

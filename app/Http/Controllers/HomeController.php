@@ -8,6 +8,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $header = 1;
+        return view('home',compact('header'));
+    }
+
+    public function product()
+    {
+        $onProductPage = 1;
+        return view('product',compact('onProductPage'));
     }
 }
