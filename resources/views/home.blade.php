@@ -68,4 +68,22 @@
             </div>
         </div>
     </div>
+
+    <div class="container-fluid"
+         style="background: url({{ asset('img/test.png') }});background-repeat: no-repeat;background-size: cover;height: 300px;">
+        <form action="">
+            <div class="p-3 d-flex align-items-center align-content-center flex-column text-white float-right text-center">
+                <div class="row">
+                    <p>عضویت در خبرنامه</p>
+                </div>
+                <div class="row">
+                    <button style="height: 30px;margin: 0px;background-color: white;border: 0px;outline: 0px;"> <
+                    </button>
+                    <input type="email"
+                           style="direction:ltr;padding: 10px;color: #fff;margin:0;border: 1px solid white;background-color: transparent;height: 30px;"
+                           placeholder="ایمیل خود را وارد نمایید.">
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection

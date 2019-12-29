@@ -114,6 +114,21 @@
 
 <script>
 
+    /*navigation*/
+    let nav = document.getElementsByClassName('navbar')[0];
+    window.onscroll = function(){
+        if(document.documentElement.scrollTop >= 10 || document.body.scrollTop >= 10)
+        {
+            nav.classList.remove('py-4');
+            nav.classList.add('py-2');
+        }
+        else
+        {
+            nav.classList.add('py-4');
+            nav.classList.remove('py-2');
+        }
+    }
+    /**/
     searchBtn.onclick = function () {
         if (searchBox.classList.contains('d-none')) {
             searchBox.classList.remove('d-none');
@@ -135,18 +150,5 @@
         menu.style.display = 'none';
         menu.style.opacity = '0';
     };
-
-    $("#btnGetOffer").click(function (event) {
-
-        //Fetch form to apply custom Bootstrap validation
-        var form = $("#formGetOffer")
-
-        if (form[0].checkValidity() === false) {
-            event.preventDefault()
-            event.stopPropagation()
-        }
-
-        form.addClass('was-validated');
-    });
 
 </script>

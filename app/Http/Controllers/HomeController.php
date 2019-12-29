@@ -17,4 +17,9 @@ class HomeController extends Controller
         $onProductPage = 1;
         return view('product',compact('onProductPage'));
     }
+
+    public function basket()
+    {
+        return view('basket');
+    }
 }

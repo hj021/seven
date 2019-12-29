@@ -51,10 +51,18 @@
     <div class="container-fluid" style="background-color: #222">
         <h3 class="text-center text-white pt-5">محصولات مشابه</h3>
         <div class="row p-3 d-flex text-center justify-content-center text-white">
-            <a href="#" class="col-12 col-md-2 similar-hover rounded p-3 text-white">
+            <a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
                 <img class="img-fluid" src="{{ asset('img/test.png') }}" alt="">
                 <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
-                <h4 style="font-size: 1rem !important;" class="my-2">25.000 تومان</h4>
+                <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
+            </a><a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
+                <img class="img-fluid" src="{{ asset('img/test.png') }}" alt="">
+                <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
+                <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
+            </a><a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
+                <img class="img-fluid" src="{{ asset('img/test.png') }}" alt="">
+                <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
+                <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
             </a>
         </div>
     </div>

@@ -13,4 +13,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/product/{product}', 'HomeController@product')->name('product');
+
+Route::get('/basket', 'HomeController@basket')->name('basket');
