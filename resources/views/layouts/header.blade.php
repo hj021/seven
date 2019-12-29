@@ -2,23 +2,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <div class="col-10"></div>
                 <h3>ورود</h3>
+                <div class="col-10"></div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form class="form" role="form" autocomplete="off" id="formGetOffer" novalidate="" method="POST">
+                <form action="{{ url('/login') }}" class="form" role="form" autocomplete="off" id="formGetOffer"
+                      novalidate="" method="POST">
+                    @csrf
+                    @if(!!session('error'))
+                    <p class="text-danger">{{ session('error') }}</p>
+                    @endif
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" id="uname1" required=""
                                placeholder="نام کاربری">
                         <div class="invalid-feedback">لطفا این گزینه را وارد نمایید.</div>
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="form-control" id="pwd1" required="" placeholder="رمز">
+                        <input type="password" class="form-control" name="password" id="pwd1" required=""
+                               placeholder="رمز">
                         <div class="invalid-feedback">وارد کردن پسور الزامی است.</div>
                     </div>
-                    <a href="" class="text-muted py-2 d-block">ثبت نام</a>
-                    <a href="" class="text-muted py-2 d-block">فراموشی رمز عبور</a>
+                    <a href="{{ url('register') }}" class="text-muted py-2 d-block">ثبت نام</a>
+                    <a href="{{ url('reset-password') }}" class="text-muted py-2 d-block">فراموشی رمز عبور</a>
                     <div class="form-group py-4">
                         <button type="submit" class="btn btn-light" id="btnGetOffer">ورود</button>
                     </div>
@@ -89,7 +95,8 @@
 </nav>
 
 <div class="position-relative">
-    <div class="drop-content position-fixed" style="background-color: @isset($header) rgba(34, 34, 34, 0.8) @else #222 @endif">
+    <div class="drop-content position-fixed"
+         style="background-color: @isset($header) rgba(34, 34, 34, 0.8) @else #222 @endif">
         <div class="container">
             <div class="d-flex justify-content-around text-gray" style="margin-top:100px;">
                 <div class="col-3">
@@ -113,17 +120,18 @@
 </div>
 
 <script>
-
+    @if(!!session('error'))
+    setTimeout(() => {
+        $('#GetOfferModal').modal('show');
+    },500);
+    @endif
     /*navigation*/
     let nav = document.getElementsByClassName('navbar')[0];
-    window.onscroll = function(){
-        if(document.documentElement.scrollTop >= 10 || document.body.scrollTop >= 10)
-        {
+    window.onscroll = function () {
+        if (document.documentElement.scrollTop >= 10 || document.body.scrollTop >= 10) {
             nav.classList.remove('py-4');
             nav.classList.add('py-2');
-        }
-        else
-        {
+        } else {
             nav.classList.add('py-4');
             nav.classList.remove('py-2');
         }

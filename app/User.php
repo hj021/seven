@@ -42,4 +42,15 @@ class User extends Authenticatable
         if($this->id == 1) return true;
         return false;
     }
+
+    public static function login($username, $password)
+    {
+        $user = self::where('username', $username)->first();
+        if ($user && \Hash::check($password, $user->password)) {
+            if (\Auth::loginUsingId($user->id))
+                return redirect('/');
+            return back();
+        } else
+            return redirect('/')->with(['error' => 'نام کاربری و یا رمز اشتباه است.']);
+    }
 }
