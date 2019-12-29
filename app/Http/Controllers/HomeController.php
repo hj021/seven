@@ -22,4 +22,9 @@ class HomeController extends Controller
     {
         return view('basket');
     }
+
+    public function adminPage()
+    {
+        return view('admin.dashboard');
+    }
 }

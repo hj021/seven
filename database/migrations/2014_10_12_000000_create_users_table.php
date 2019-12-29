@@ -20,13 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->text('address');
-            $table->unsignedInteger('payment_id');
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('payment_id')
-                ->references('id')
-                ->on('payments');
         });
     }
 

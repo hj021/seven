@@ -127,7 +127,7 @@
             nav.classList.add('py-4');
             nav.classList.remove('py-2');
         }
-    }
+    };
     /**/
     searchBtn.onclick = function () {
         if (searchBox.classList.contains('d-none')) {
