@@ -13,12 +13,12 @@
 
         <div class="col-12 col-md-6 my-3 mx-auto">
                 <div class="row d-flex justify-content-center">
-                    <img id="mainImage" style="width: 500px;height: 380px;" class="img-fluid rounded shadow" src="{{ asset('img/test.png') }}" alt="">
+                    <img id="mainImage" style="width: 500px;height: 380px;" class="img-fluid rounded shadow" src="{{ asset('img/1.jpg') }}" alt="">
                 </div>
                 <div class="gallery-content row mt-2 d-flex justify-content-center">
-                    <img src="{{ asset('img/test.png') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
-                    <img src="{{ asset('img/test2.png') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
-                    <img src="{{ asset('img/test.png') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
+                    <img src="{{ asset('img/1.jpg') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
+                    <img src="{{ asset('img/4.jpg') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
+                    <img src="{{ asset('img/2.jpg') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
                 </div>
 
         </div>
@@ -27,7 +27,8 @@
         <div class="col-12 col-md-6 my-3 text-center text-md-left">
             <h2>ساعت جال سوییسی</h2>
             <p><b>21.000 تومان</b></p>
-            <p><b>قیمت بدون مالیات</b></p>
+            <p>قیمت بدون مالیات</p>
+            <p>هنرمند : <b>استاد ایرانپور</b></p>
             <p><a href="" class="btn btn-dark p-3"><span>افزودن به سبد خرید</span><span><img class="img-fluid p-1 col-2" src="{{ asset('img/basket.png') }}" alt=""></span></a></p>
             <a href=""><span><img src="{{ asset('img/love.png') }}" alt=""></span> <b>افزودن به علاقه مندی ها</b></a>
         </div>
@@ -52,15 +53,15 @@
         <h3 class="text-center text-white pt-5">محصولات مشابه</h3>
         <div class="row p-3 d-flex text-center justify-content-center text-white">
             <a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
-                <img class="img-fluid" src="{{ asset('img/test.png') }}" alt="">
+                <img class="img-fluid" src="{{ asset('img/1.jpg') }}" alt="">
                 <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
                 <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
             </a><a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
-                <img class="img-fluid" src="{{ asset('img/test.png') }}" alt="">
+                <img class="img-fluid" src="{{ asset('img/2.jpg') }}" alt="">
                 <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
                 <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
             </a><a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
-                <img class="img-fluid" src="{{ asset('img/test.png') }}" alt="">
+                <img class="img-fluid" src="{{ asset('img/3.jpg') }}" alt="">
                 <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
                 <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
             </a>

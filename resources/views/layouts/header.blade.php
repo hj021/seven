@@ -52,7 +52,7 @@
 <nav class="navbar py-4 navbar-expand-lg navbar-dark @isset($header) navbar-back @else dark-back @endif">
     <div class="container">
 
-        <a class="navbar-brand" href="#">بوم نقش پرداز</a>
+        <a class="navbar-brand mb-3" href="#">بوم نقش پرداز</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -65,6 +65,11 @@
                     <a class="nav-link dropdown-toggle" id="dropMenu" href="#">
                         محصولات
                     </a>
+                    <ul class="navbar-nav ml-auto d-lg-none d-none" id="dropContent">
+                        <li class="py-3"><a class="text-white" href="">موضوع</a></li>
+                        <li class="py-3"><a class="text-white" href="">موضوع</a></li>
+                        <li class="py-3"><a class="text-white" href="">موضوع</a></li>
+                    </ul>
                 </li>
 
                 <li class="nav-item active">
@@ -94,7 +99,7 @@
     </div>
 </nav>
 
-<div class="position-relative">
+<div class="position-relative" id="nav-menu">
     <div class="drop-content position-fixed"
          style="background-color: @isset($header) rgba(34, 34, 34, 0.8) @else #222 @endif">
         <div class="container">
@@ -146,6 +151,10 @@
     searchBack.onclick = function () {
         searchBox.classList.add('d-none');
         searchBox.classList.remove('d-flex');
+    };
+
+    dropMenu.onclick = function () {
+        dropContent.classList.toggle('d-none');
     };
 
     let menu = document.getElementsByClassName('drop-content')[0];

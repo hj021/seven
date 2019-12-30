@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -13,10 +14,9 @@ class HomeController extends Controller
         return view('home',compact('header'));
     }
 
-    public function product()
+    public function product(/*Product $product,$slug*/)
     {
-        $onProductPage = 1;
-        return view('product',compact('onProductPage'));
+        return view('product');
     }
 
     public function basket()
