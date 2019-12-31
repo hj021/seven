@@ -17,8 +17,8 @@
                 <td>10</td>
                 <td>50</td>
                 <td><input type="number" style="width: 50px;" class="text-center p-1" value="1"></td>
-                <td>lorem inpuseu darvinism in</td>
-                <td><img style="width: 100px;" class="img-fluid" src="{{ asset('img/test.png') }}" alt=""></td>
+                <td>تابلوی شماره 154</td>
+                <td><img style="width: 100px;" class="img-fluid" src="{{ asset('img/1.jpg') }}" alt=""></td>
             </tr>
             <tr>
                 <td colspan="6">

@@ -75,6 +75,13 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">صفحه خانه </a>
                 </li>
+
+                @if(auth()->check() && auth()->user()->isAdmin())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/manager') }}">مدیریت</a>
+                </li>
+                @endif
+
                 <div class="col-1"></div>
                 <li class="nav-item">
                     <a href="#GetOfferModal" role="button" class="nav-link" data-toggle="modal">
