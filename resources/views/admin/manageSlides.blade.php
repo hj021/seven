@@ -42,12 +42,13 @@
                                     @method('put')
                                     @csrf
 
-                                    <select name="category" class="form-control">
-                                        @foreach($cats as $cat)
-                                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                <b>نام محصول : </b>
+                                <select name="products" class="form-control">
+                                        @foreach($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->title }}</option>
                                         @endforeach
                                     </select>
-                                    <input type="file" name="img" class="mb-2 form-control">
+                                    <input type="file" name="img" class="my-2 form-control">
                                     <input type="submit" class="btn btn-primary" value="افزودن">
                                 </form>
                                 </p>

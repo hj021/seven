@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('Access:users');
-    }
-
     public function showUsers()
     {
         $users = User::paginate(10);

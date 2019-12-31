@@ -13,9 +13,9 @@
                         background-image: url({{ asset('img/slide1.jpg') }});
                         "></div>
                 <div class="slide__content">
-                    {{--                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">--}}
-                    {{--                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>--}}
-                    {{--                </svg>--}}
+                                    <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+                                        <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
+                                    </svg>
                     <div class="slide__text text-bold text-white p-3" style="background: rgba(10,10,10,0.5);">
                         <h2 class="slide__text-heading">محصول 852</h2>
                         <p class="slide__text-desc">
@@ -30,9 +30,9 @@
             <div class="slide slide-1 ">
                 <div class="slide__bg" style="background-image: url({{ asset('img/slide2.jpg') }});"></div>
                 <div class="slide__content">
-                    {{--                <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">--}}
-                    {{--                    <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>--}}
-                    {{--                </svg>--}}
+                                    <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+                                        <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
+                                    </svg>
                     <div class="slide__text text-bold text-white p-3" style="background: rgba(10,10,10,0.5);">
                         <h2 class="slide__text-heading">محصول 852</h2>
                         <p class="slide__text-desc">

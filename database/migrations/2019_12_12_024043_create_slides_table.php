@@ -17,7 +17,12 @@ class CreateSlidesTable extends Migration
             $table->bigIncrements('id');
             $table->text('img');
             $table->text('description');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
+
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products');
         });
     }
 

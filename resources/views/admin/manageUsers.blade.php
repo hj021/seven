@@ -22,9 +22,6 @@
                                         <th>نام کاربری</th>
                                         <th>ایمیل</th>
                                         <th>آدرس</th>
-                                        <th>نام رستوران</th>
-                                        <th>نام کاربری</th>
-                                        <th>ویرایش</th>
                                         <th>حذف</th>
 
                                 </tr>
@@ -37,11 +34,6 @@
                                         <td>{{ $user->username }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->address }}</td>
-
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->username }}</td>
-
-                                        <td><a href="{{ url('manager/show-user/'.$user->id) }}">ویرایش دسترسی</a></td>
 
                                         <td><a href="{{ url('manager/remove-user/'.$user->id) }}">حذف</a></td>
                                 </tr>
