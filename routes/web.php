@@ -19,6 +19,9 @@ Route::get('/logout', 'HomeController@login')->name('logout');
 Route::get('/register', 'HomeController@registerPage')->name('register.page');
 Route::post('/register', 'HomeController@register')->name('register');
 
+Route::get('/edit', 'HomeController@editPage')->name('edit.page');
+Route::post('/edit', 'HomeController@edit')->name('edit');
+
 Route::get('/product', 'HomeController@product')->name('product');
 
 Route::get('/basket', 'HomeController@basket')->name('basket');

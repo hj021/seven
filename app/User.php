@@ -39,7 +39,8 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        if($this->id == 1) return true;
+        if($this->id == 1)
+            return true;
         return false;
     }
 
@@ -50,7 +51,7 @@ class User extends Authenticatable
             if (\Auth::loginUsingId($user->id))
                 return redirect('/');
             return back();
-        } else
-            return redirect('/')->with(['error' => 'نام کاربری و یا رمز اشتباه است.']);
+        }
+        return redirect('/')->with(['error' => 'نام کاربری و یا رمز اشتباه است.']);
     }
 }

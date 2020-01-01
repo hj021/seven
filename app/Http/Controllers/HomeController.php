@@ -49,10 +49,10 @@ class HomeController extends Controller
     public function register(Request $request)
     {
         $res = false;
-        $errors = [];
         $user = null;
         if(
             (User::where('username',$request->username)->get())->isEmpty() &&
+            (User::where('phone',$request->phone)->get())->isEmpty() &&
             (User::where('email',$request->email)->get())->isEmpty()
         )
         {
@@ -62,11 +62,12 @@ class HomeController extends Controller
             $user->email = $request->email;
             $user->phone = $request->phone;
             $user->name = $request->name;
+            $user->address = $request->address;
             $res = $user->save();
             auth()->login($user);
         }
         else
-            $errors['username'] = "نام کاربری و یا ایمیل وارد شده تکراری می باشد.";
+            $error = "نام کاربری یا ایمیل ویا تلفن وارد شده تکراری می باشد.";
 
         if($res)
         {
@@ -74,9 +75,44 @@ class HomeController extends Controller
         }
         else
         {
-            return view('register',compact('errors','user'));
+            return view('register',compact('error','user'));
         }
 
     }
 
+    public function edit(Request $request)
+    {
+        $res = false;
+        $user = null;
+        if(
+            (User::where('phone',$request->phone)->get())->isEmpty()
+        )
+        {
+            $user = auth()->user();
+            $user->password = $request->password == '' ?: bcrypt($request->password);
+            $user->phone = $request->phone;
+            $user->name = $request->name;
+            $user->address = $request->address;
+            $res = $user->save();
+            auth()->login($user);
+        }
+        else
+            $error = "نام کاربری یا ایمیل ویا تلفن وارد شده تکراری می باشد.";
+
+        if($res)
+        {
+            return redirect('edit');
+        }
+        else
+        {
+            return view('edit',compact('error','user'));
+        }
+
+    }
+
+    public function editPage()
+    {
+        $user = auth()->user();
+        return view('edit',compact('user'));
+    }
 }

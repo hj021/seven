@@ -2,34 +2,47 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>ورود</h3>
+                @if(auth()->check())
+                    <div class="d-block">
+                        <span>{{ auth()->user()->name }}</span>
+                        </div>
+                @else
+                    <h3>
+                        ورود
+                    </h3>
+                @endif
                 <div class="col-10"></div>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <div class="modal-body">
-                <form action="{{ url('/login') }}" class="form" role="form" autocomplete="off" id="formGetOffer"
-                      novalidate="" method="POST">
-                    @csrf
-                    @if(!!session('error'))
-                    <p class="text-danger">{{ session('error') }}</p>
-                    @endif
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" id="uname1" required=""
-                               placeholder="نام کاربری">
-                        <div class="invalid-feedback">لطفا این گزینه را وارد نمایید.</div>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="pwd1" required=""
-                               placeholder="رمز">
-                        <div class="invalid-feedback">وارد کردن پسور الزامی است.</div>
-                    </div>
-                    <a href="{{ url('register') }}" class="text-muted py-2 d-block">ثبت نام</a>
-                    <a href="{{ url('reset-password') }}" class="text-muted py-2 d-block">فراموشی رمز عبور</a>
-                    <div class="form-group py-4">
-                        <button type="submit" class="btn btn-light" id="btnGetOffer">ورود</button>
-                    </div>
-                </form>
-            </div>
+            @unless(auth()->check())
+                <div class="modal-body">
+                    <form action="{{ url('/login') }}" class="form" role="form" autocomplete="off" id="formGetOffer"
+                          novalidate="" method="POST">
+                        @csrf
+                        @if(!!session('error'))
+                            <p class="text-danger">{{ session('error') }}</p>
+                        @endif
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" id="uname1" required=""
+                                   placeholder="نام کاربری">
+                            <div class="invalid-feedback">لطفا این گزینه را وارد نمایید.</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="pwd1" required=""
+                                   placeholder="رمز">
+                            <div class="invalid-feedback">وارد کردن پسور الزامی است.</div>
+                        </div>
+                        <a href="{{ url('register') }}" class="text-muted py-2 d-block">ثبت نام</a>
+                        <a href="{{ url('reset-password') }}" class="text-muted py-2 d-block">فراموشی رمز عبور</a>
+                        <div class="form-group py-4">
+                            <button type="submit" class="btn btn-light" id="btnGetOffer">ورود</button>
+                        </div>
+                    </form>
+                    @else
+                        <a href="{{ url('edit') }}" class="btn btn-block btn-info">ویرایش پروفایل</a>
+                        <a href="{{ url('logout') }}" class="btn btn-block btn-danger">خروج از حساب کاربری</a>
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -75,11 +88,10 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">صفحه خانه </a>
                 </li>
-
                 @if(auth()->check() && auth()->user()->isAdmin())
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/manager') }}">مدیریت</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/manager') }}">مدیریت</a>
+                    </li>
                 @endif
 
                 <div class="col-1"></div>
@@ -96,8 +108,8 @@
                                                                      src="{{ asset('img/search.png') }}" alt=""></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img class="img-fluid" style="width: 20px;"
-                                                      src="{{ asset('img/basket.png') }}" alt="">
+                    <a class="nav-link" href="{{ url('basket') }}"><img class="img-fluid" style="width: 20px;"
+                                                                        src="{{ asset('img/basket.png') }}" alt="">
                     </a>
                 </li>
             </ul>
@@ -135,7 +147,7 @@
     @if(!!session('error'))
     setTimeout(() => {
         $('#GetOfferModal').modal('show');
-    },500);
+    }, 500);
     @endif
     /*navigation*/
     let nav = document.getElementsByClassName('navbar')[0];
