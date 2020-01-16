@@ -95,12 +95,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <nav class="mt-2">
 
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="{{ url('manager/home') }}" target="_blank" class="nav-link">
+                                <i class="nav-icon fa fa-home"></i>
+                                <p>
+                                    صفحه خانه
+                                </p>
+                            </a>
+                        </li>
 
-                        <!-- Add icons to the links using the .nav-icon class
-
-                             with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
 
                             <a href="#" class="nav-link">
@@ -206,18 +210,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <li class="nav-item has-treeview">
 
-                            <a href="#" class="nav-link">
+                                <a href="{{ url('manager/site-setting') }}" class="nav-link">
 
                                 <i class="nav-icon fa fa-gears"></i>
-
-                                <p>
-
                                     تنظیمات سایت
-
-                                    <i class="right fa fa-angle-left"></i>
-
-                                </p>
-
                             </a>
 
                         <li class="nav-item has-treeview">

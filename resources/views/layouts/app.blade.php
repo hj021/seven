@@ -1,3 +1,8 @@
+@php
+    $categories = \App\Category::with(['products'])->get();
+    $setting = \App\Setting::first();
+
+@endphp
 <!doctype html>
 <html lang="fa">
 <head>

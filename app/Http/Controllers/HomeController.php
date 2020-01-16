@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Setting;
+use App\Slide;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -11,12 +13,14 @@ class HomeController extends Controller
     public function index()
     {
         $header = 1;
-        return view('home',compact('header'));
+        $slides = Slide::with('product')->get();
+        return view('home',compact('header','slides'));
     }
 
-    public function product(/*Product $product,$slug*/)
+    public function product(Product $product,$slug='')
     {
-        return view('product');
+        $sames = $product->randomSimilar();
+        return view('product',compact('product','sames'));
     }
 
     public function basket()
@@ -94,7 +98,6 @@ class HomeController extends Controller
             $user->name = $request->name;
             $user->address = $request->address;
             $res = $user->save();
-            auth()->login($user);
         }
         else
             $error = "نام کاربری یا ایمیل ویا تلفن وارد شده تکراری می باشد.";

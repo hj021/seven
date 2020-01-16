@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('title','محصول')
 @section('pics')
+    <div id="ajaxModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>محصول مورد نظر با موفقیت به سبد شما اضافه شد.</p>
+                    <p><a href="{{ url('/basket') }}" class="btn btn-primary">رفتن به سبد خرید</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <svg class="d-none d-lg-block" style="position: fixed;z-index: -1;margin-top: -600px;margin-right: -500px;"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -13,23 +25,23 @@
 
         <div class="col-12 col-md-6 my-3 mx-auto">
                 <div class="row d-flex justify-content-center">
-                    <img id="mainImage" style="width: 500px;height: 380px;" class="img-fluid rounded shadow" src="{{ asset('img/1.jpg') }}" alt="">
+                    <img id="mainImage" style="width: 500px;height: 380px;" class="img-fluid rounded shadow" src="{{ asset('upload/'.$product->pics[0]) }}" alt="{{ $product->title }}">
                 </div>
                 <div class="gallery-content row mt-2 d-flex justify-content-center">
-                    <img src="{{ asset('img/1.jpg') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
-                    <img src="{{ asset('img/4.jpg') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
-                    <img src="{{ asset('img/2.jpg') }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="">
+                    @foreach($product->pics as $pic)
+                        <img src="{{ asset('upload/'.$pic) }}" class="img-fluid rounded" style="width:100px;height: 100px;margin: 10px;" alt="{{ $product->title }}">
+                    @endforeach
                 </div>
 
         </div>
 
 
         <div class="col-12 col-md-6 my-3 text-center text-md-left">
-            <h2>ساعت جال سوییسی</h2>
-            <p><b>21.000 تومان</b></p>
+            <h2>{{ $product->title }}</h2>
+            <p><b>{{ $product->price }}</b> <span>تومان</span></p>
             <p>قیمت بدون مالیات</p>
-            <p>هنرمند : <b>استاد ایرانپور</b></p>
-            <p><a href="" class="btn btn-dark p-3"><span>افزودن به سبد خرید</span><span><img class="img-fluid p-1 col-2" src="{{ asset('img/basket.png') }}" alt=""></span></a></p>
+            <p>هنرمند : <b>{{ $product->artist }}</b></p>
+            <p><a id="send" href="" class="btn btn-dark p-3"><span>افزودن به سبد خرید</span><span><img class="img-fluid p-1 col-2" src="{{ asset('img/basket.png') }}" alt=""></span></a></p>
             <a href=""><span><img src="{{ asset('img/love.png') }}" alt=""></span> <b>افزودن به علاقه مندی ها</b></a>
         </div>
 
@@ -44,7 +56,7 @@
                 </table>
             </div>
             <div class="col-12 col-md-6 p-3 text-justify">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolores est eum minima nesciunt sapiente voluptatum. Atque id in ipsam, necessitatibus nihil praesentium qui repellendus similique soluta voluptatem voluptatibus, voluptatum!</p>
+                <p>{{ $product->description }}</p>
             </div>
         </div>
     </div>
@@ -52,19 +64,15 @@
     <div class="container-fluid" style="background-color: #222">
         <h3 class="text-center text-white pt-5">محصولات مشابه</h3>
         <div class="row p-3 d-flex text-center justify-content-center text-white">
-            <a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
-                <img class="img-fluid" src="{{ asset('img/1.jpg') }}" alt="">
-                <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
-                <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
-            </a><a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
-                <img class="img-fluid" src="{{ asset('img/2.jpg') }}" alt="">
-                <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
-                <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
-            </a><a href="#" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
-                <img class="img-fluid" src="{{ asset('img/3.jpg') }}" alt="">
-                <h2 style="font-size: 1.5rem !important;" class="my-2">product name</h2>
-                <h4 style="font-size: 1rem !important;" class="my-2 pb-5">25.000 تومان</h4>
+
+        @foreach($sames as $same)
+            <a href="{{ url('product/'.$same->id) }}" class="col-12 mx-2 col-md-2 similar-hover rounded p-3 text-white">
+                <img class="img-fluid" src="{{ asset('upload/'.$same->pics[0]) }}" alt="{{ $same->title }}">
+                <h2 style="font-size: 1.5rem !important;" class="my-2">{{ $same->title }}</h2>
+                <h4 style="font-size: 1rem !important;" class="my-2 pb-5"><span> {{ $same->price }} </span><span>تومان</span></h4>
             </a>
+        @endforeach
+
         </div>
     </div>
 
@@ -78,6 +86,27 @@
                 mainImage.classList.add('gallery-animation');
                 setTimeout(()=>{mainImage.classList.remove('gallery-animation');},800);
             }
+        }
+        send.onclick = function (e)
+        {
+            e.preventDefault();
+            $.ajax({
+                url:    "/add-to-basket",
+                data:   {
+                    "id":  {{ $product->id }},
+                    "_token": "{{ csrf_token() }}",
+                },
+                method: 'POST',
+                success: function(response){
+                    console.log(response);
+                    if(response.result) {
+                        $('#ajaxModal').modal('show');
+                        // setTimeout(()=>{
+                        //     $('#ajaxModal').modal('toggle');
+                        // },2000);
+                    }
+                }
+            });
         }
     </script>
 

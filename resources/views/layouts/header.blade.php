@@ -5,7 +5,7 @@
                 @if(auth()->check())
                     <div class="d-block">
                         <span>{{ auth()->user()->name }}</span>
-                        </div>
+                    </div>
                 @else
                     <h3>
                         ورود
@@ -14,8 +14,8 @@
                 <div class="col-10"></div>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            @unless(auth()->check())
-                <div class="modal-body">
+            <div class="modal-body">
+                @unless(auth()->check())
                     <form action="{{ url('/login') }}" class="form" role="form" autocomplete="off" id="formGetOffer"
                           novalidate="" method="POST">
                         @csrf
@@ -38,11 +38,11 @@
                             <button type="submit" class="btn btn-light" id="btnGetOffer">ورود</button>
                         </div>
                     </form>
-                    @else
-                        <a href="{{ url('edit') }}" class="btn btn-block btn-info">ویرایش پروفایل</a>
-                        <a href="{{ url('logout') }}" class="btn btn-block btn-danger">خروج از حساب کاربری</a>
-                </div>
-            @endif
+                @else
+                    <a href="{{ url('edit') }}" class="btn btn-block btn-info">ویرایش پروفایل</a>
+                    <a href="{{ url('logout') }}" class="btn btn-block btn-danger">خروج از حساب کاربری</a>
+                @endif
+            </div>
         </div>
     </div>
 </div>
@@ -65,7 +65,7 @@
 <nav class="navbar py-4 navbar-expand-lg navbar-dark @isset($header) navbar-back @else dark-back @endif">
     <div class="container">
 
-        <a class="navbar-brand mb-3" href="#">بوم نقش پرداز</a>
+        <a class="navbar-brand mb-3" href="{{ url('') }}">بوم نقش پرداز</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -76,17 +76,19 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="dropMenu" href="#">
-                        محصولات
+                        موضوعات
                     </a>
                     <ul class="navbar-nav ml-auto d-lg-none d-none" id="dropContent">
-                        <li class="py-3"><a class="text-white" href="">موضوع</a></li>
-                        <li class="py-3"><a class="text-white" href="">موضوع</a></li>
-                        <li class="py-3"><a class="text-white" href="">موضوع</a></li>
+                        @foreach($categories as $category)
+                            <li class="py-3">
+                                <a class="text-white" href="{{ url('category/'.$category->id) }}">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">صفحه خانه </a>
+                    <a class="nav-link" href="{{ url('') }}">صفحه خانه </a>
                 </li>
                 @if(auth()->check() && auth()->user()->isAdmin())
                     <li class="nav-item">
@@ -122,22 +124,20 @@
     <div class="drop-content position-fixed"
          style="background-color: @isset($header) rgba(34, 34, 34, 0.8) @else #222 @endif">
         <div class="container">
-            <div class="d-flex justify-content-around text-gray" style="margin-top:100px;">
-                <div class="col-3">
-                    <span>عنوان</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#">اول</a>
-                </div>
-                <div class="col-3">
-                    <span>عنوان</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#">اول</a>
-                </div>
-                <div class="col-3">
-                    <span>عنوان</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#">اول</a>
-                </div>
+            <div class="d-flex justify-content-around text-gray" style="margin-top:140px;">
+                @foreach($categories as $category)
+                    @unless($category->products->isEmpty())
+                        <div class="col-{{ $categories->count()/12 }}">
+                            <a href="{{ url('category/'.$category->id) }}">
+                                <span>{{ $category->name }}</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            @foreach($category->products as $product)
+                                <a class="d-block" href="{{ url('product/'.$product->id) }}">{{ $product->title }}</a>
+                            @endforeach
+                        </div>
+                    @endunless
+                @endforeach
             </div>
         </div>
     </div>

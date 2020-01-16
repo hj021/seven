@@ -4,35 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Food;
 use App\Payment;
+use App\Product;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
 {
-    public function show()
+    public function add(Request $request)
     {
-        $basket = unserialize(session('basket'));
-        if ($basket == null) $basket = [];
-        return view('user.basket', compact('basket'));
-    }
-
-    public function add($id, Request $request)
-    {
-        $id = (int)$id;
-        $counter = $request->count;
-        if (is_integer($id)) {
-            $count = (session('count') != null) ? session('count') : 0;
-            $basket = unserialize(session('basket'), ["allowed_classes" => false]);
-            $product = Food::find($id);
-            if (isset($basket[$id])) {
-                $basket[$id]['count'] += $counter;
-            } else {
-                $basket[$id] = ['res' => $product->restaurant, 'price' => $product->price, 'name' => $product->title, 'img' => $product->img, 'count' => $counter];
-                $count++;
-            }
-            session(['basket' => serialize($basket)]);
-            session(['count' => $count]);
+        $result = false;
+        if(Product::find($request->id))
+        {
+            $basket = explode('#',session('basket')) ?? [];
+            $basket[] = $request->id;
+            session(['basket' => implode('#',$basket)]);
+            $result = true;
         }
-        return redirect(rtrim($_SERVER['HTTP_REFERER'], '/alert') . '/alert');
+        return ['result' => $result];
     }
 
     public function remove($id)

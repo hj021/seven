@@ -20,18 +20,6 @@
                     </div>
                 @endif
 
-                @if(!empty($errors))
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                @foreach($errors as $error)
-                                    <span class="alert alert-danger ">{{ $error }}</span>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
@@ -48,6 +36,7 @@
                                             <option value="{{ $product->id }}">{{ $product->title }}</option>
                                         @endforeach
                                     </select>
+                                    <textarea name="description" class="my-2 form-control">توضیحات اسلاید ...</textarea>
                                     <input type="file" name="img" class="my-2 form-control">
                                     <input type="submit" class="btn btn-primary" value="افزودن">
                                 </form>

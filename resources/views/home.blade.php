@@ -1,48 +1,32 @@
 @extends('layouts.app')
 @section('title','صفحه خانه')
 @section('pics')
-
     <div class="slider-container">
         <div class="slider-control left inactive"></div>
         <div class="slider-control right"></div>
         <ul class="slider-pagi"></ul>
         <div class="slider">
 
-            <div class="slide slide-0 active">
-                <div class="slide__bg" style="
-                        background-image: url({{ asset('img/slide1.jpg') }});
-                        "></div>
-                <div class="slide__content">
-                                    <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
-                                        <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
-                                    </svg>
-                    <div class="slide__text text-bold text-white p-3" style="background: rgba(10,10,10,0.5);">
-                        <h2 class="slide__text-heading">محصول 852</h2>
-                        <p class="slide__text-desc">
-                            انتخاب شما بهترین انتخاب نقش بوم پرداز در سال 2020
-                        </p>
-                        <a href="http://hkmbhutto.wix.com/abdulrasheed"
-                           class="slide__text-link">خرید</a>
+            @foreach($slides as $slide)
+                <div class="slide slide-{{ $loop->index }} active">
+                    <div class="slide__bg" style="
+                            background-image: url({{ asset('upload/'.$slide->img) }});
+                            "></div>
+                    <div class="slide__content">
+                        <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+                            <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
+                        </svg>
+                        <div class="slide__text text-bold text-white p-3" style="background: rgba(10,10,10,0.5);">
+                            <h2 class="slide__text-heading">{{ $slide->product->title }}</h2>
+                            <p class="slide__text-desc">
+                                {{ $slide->description }}
+                            </p>
+                            <a href="{{ url('product') }}"
+                               class="slide__text-link">خرید</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="slide slide-1 ">
-                <div class="slide__bg" style="background-image: url({{ asset('img/slide2.jpg') }});"></div>
-                <div class="slide__content">
-                                    <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
-                                        <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405"/>
-                                    </svg>
-                    <div class="slide__text text-bold text-white p-3" style="background: rgba(10,10,10,0.5);">
-                        <h2 class="slide__text-heading">محصول 852</h2>
-                        <p class="slide__text-desc">
-                            انتخاب شما بهترین انتخاب نقش بوم پرداز در سال 2020
-                        </p>
-                        <a href="http://hkmbhutto.wix.com/abdulrasheed"
-                           class="slide__text-link">خرید</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>
@@ -62,10 +46,10 @@
 
             <div class="col-12 col-lg-6">
                 <div class="hover ehover1 my-2">
-                    <img class="img-fluid rounded" src="{{ asset('img/2.jpg') }}" alt="">
+                    <img class="img-fluid rounded" src="{{ asset('upload/2.jpg') }}" alt="">
                     <div class="overlay d-flex justify-content-center flex-column">
                         <h2>محصول شماره 9</h2>
-                        <a href="#" class="btn btn-danger info nullbutton" data-toggle="modal" data-target="#modal13">
+                        <a href="{{ url('product') }}" class="btn btn-danger info nullbutton">
                             خرید
                         </a>
                     </div>
@@ -73,10 +57,10 @@
                 <div class="row justify-content-center align-content-start align-items-start my-2">
                     <div class="col-12 col-lg-6">
                         <div class="hover ehover1 my-2">
-                            <img class="img-fluid rounded" src="{{ asset('img/4.jpg') }}" alt="">
+                            <img class="img-fluid rounded" src="{{ asset('upload/4.jpg') }}" alt="">
                             <div class="overlay d-flex justify-content-center flex-column">
                                 <h2>محصول شماره 9</h2>
-                                <a href="#" class="btn btn-danger info nullbutton" data-toggle="modal" data-target="#modal13">
+                                <a href="{{ url('product') }}" class="btn btn-danger info nullbutton">
                                     خرید
                                 </a>
                             </div>
@@ -85,10 +69,10 @@
 
                     <div class="col-12 col-lg-6">
                         <div class="hover ehover1 my-2">
-                            <img class="img-fluid rounded" src="{{ asset('img/3.jpg') }}" alt="">
+                            <img class="img-fluid rounded" src="{{ asset('upload/3.jpg') }}" alt="">
                             <div class="overlay d-flex justify-content-center flex-column">
                                 <h2>محصول شماره 9</h2>
-                                <a href="#" class="btn btn-danger info nullbutton" data-toggle="modal" data-target="#modal13">
+                                <a href="{{ url('product') }}" class="btn btn-danger info nullbutton">
                                     خرید
                                 </a>
                             </div>
@@ -101,10 +85,10 @@
                 <div class="row justify-content-center align-content-start align-items-start my-2">
                     <div class="col-12 col-lg-6">
                         <div class="hover ehover1 my-2">
-                            <img class="img-fluid rounded" src="{{ asset('img/4.jpg') }}" alt="">
+                            <img class="img-fluid rounded" src="{{ asset('upload/4.jpg') }}" alt="">
                             <div class="overlay d-flex justify-content-center flex-column">
                                 <h2>محصول شماره 9</h2>
-                                <a href="#" class="btn btn-danger info nullbutton" data-toggle="modal" data-target="#modal13">
+                                <a href="{{ url('product') }}" class="btn btn-danger info nullbutton">
                                     خرید
                                 </a>
                             </div>
@@ -113,10 +97,10 @@
 
                     <div class="col-12 col-lg-6">
                         <div class="hover ehover1 my-2">
-                            <img class="img-fluid rounded" src="{{ asset('img/3.jpg') }}" alt="">
+                            <img class="img-fluid rounded" src="{{ asset('upload/3.jpg') }}" alt="">
                             <div class="overlay d-flex justify-content-center flex-column">
                                 <h2>محصول شماره 9</h2>
-                                <a href="#" class="btn btn-danger info nullbutton" data-toggle="modal" data-target="#modal13">
+                                <a href="{{ url('product') }}" class="btn btn-danger info nullbutton">
                                     خرید
                                 </a>
                             </div>
@@ -124,10 +108,10 @@
                     </div>
                 </div>
                 <div class="hover ehover1 my-2">
-                    <img class="img-fluid rounded" src="{{ asset('img/1.jpg') }}" alt="">
+                    <img class="img-fluid rounded" src="{{ asset('upload/1.jpg') }}" alt="">
                     <div class="overlay d-flex justify-content-center flex-column">
                         <h2>محصول شماره 8</h2>
-                        <a href="#" class="btn btn-danger info nullbutton" data-toggle="modal" data-target="#modal13">
+                        <a href="{{ url('product') }}" class="btn btn-danger info nullbutton">
                             خرید
                         </a>
                     </div>
